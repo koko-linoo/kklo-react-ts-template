@@ -1,0 +1,19 @@
+{
+  "name": "kklo-react-ts-template",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node cli.js"
+  },
+  "bin": {
+    "init-project": "./cli.js"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/koko-linoo/kklo-react-ts-template"
+  }
+}
