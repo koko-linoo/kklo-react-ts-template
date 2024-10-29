@@ -2,7 +2,7 @@
 
 const fs = require("fs");
 const path = require("path");
-const { execSync } = require("child_process");
+const { spawn, execSync } = require("child_process");
 
 function copyFolderSync(from, to) {
   fs.mkdirSync(to, { recursive: true });
@@ -16,23 +16,52 @@ function copyFolderSync(from, to) {
   });
 }
 
-function createApp() {
+function createApp(appName) {
   const appPath = path.resolve(process.cwd());
-  fs.mkdirSync(appPath, { recursive: true });
 
-  console.log(`Initializing a new project in ${appPath}`);
+  console.log(`Creating a new project in ${appPath}`);
 
-  copyFolderSync(path.join(__dirname, "template"), appPath);
+  console.log("Initializing a new project in " + appPath);
 
-  console.log("Installing dependencies...");
-
-  execSync(
-    `cd ${appPath} && npm install axios react-router-dom @tanstack/react-query`
+  const createVite = spawn(
+    "npm",
+    ["create", "vite@latest", `${appName}`, "--", "--template", "react-swc-ts"],
+    {
+      cwd: appPath,
+      shell: true,
+    }
   );
 
-  execSync(`npm install -D @types/node @vitejs/plugin-react`);
+  createVite.stdout.on("data", (data) => console.log(data.toString()));
+  createVite.stderr.on("data", (data) => console.error(data.toString()));
 
-  console.log("Project setup complete!");
+  createVite.on("close", (code) => {
+    if (code === 0) {
+      console.log(`${appName} created successfully!`);
+      const projectPath = path.join(appPath, appName);
+      copyFolderSync(path.join(__dirname, "template"), projectPath);
+
+      console.log("Installing dependencies...");
+
+      execSync(
+        `cd ${projectPath} && npm install axios react-router-dom @tanstack/react-query`
+      );
+
+      execSync(`npm install -D @types/node @vitejs/plugin-react`);
+
+      console.log("Project setup complete!");
+    } else {
+      console.error(`Installation failed with code ${code}`);
+    }
+  });
 }
 
-createApp();
+const args = process.argv.slice(2);
+const appName = args[0];
+
+if (!appName) {
+  console.error("Please specify a project name.");
+  process.exit(1);
+}
+
+createApp(appName);

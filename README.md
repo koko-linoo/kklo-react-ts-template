@@ -21,7 +21,7 @@ npm i
 Then, run the following command:
 
 ```bash
-npx init-project
+npx init-project my-project
 ```
 
 It will create a new project with the following structure:

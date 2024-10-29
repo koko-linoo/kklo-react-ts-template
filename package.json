@@ -1,6 +1,6 @@
 {
   "name": "kklo-react-ts-template",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "index.js",
   "scripts": {
     "start": "node cli.js"
