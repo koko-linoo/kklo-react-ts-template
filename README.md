@@ -14,6 +14,8 @@ Create project with vite:
 
 ```bash
 npm create vite@latest my-project
+cd my-project
+npm i
 ```
 
 Then, run the following command:
@@ -24,18 +26,41 @@ npx init-project
 
 It will create a new project with the following structure:
 
-```bash
-├── cli.js
-├── package.json
-├── README.md
-├── tsconfig.json
-├── vite.config.ts
-└── src
-    ├── App.tsx
-    ├── index.css
-    ├── index.html
-    └── main.tsx
 ```
+my-project
+├── src
+│   ├── assets
+│   │   └── ...
+│   ├── components
+│   │   ├── layout
+│   │   │   └── DashboardLayout.tsx
+│   │   └── pages
+│   │       └── ErrorPage.tsx
+│   ├── configs
+│   │   ├── api.ts
+│   │   ├── queryKeys.ts
+│   │   └── routes.ts
+│   ├── hooks
+│   │   └── useParamHelper.ts
+│   ├── pages
+│   │   └── ...
+│   ├── services
+│   │   └── user.service.ts
+│   ├── stores
+│   │   └── ...
+│   └── types.d.ts
+├── tsconfig.app.json
+├── tsconfig.node.json
+└── vite.config.ts
+```
+
+And will install the following packages:
+
+- axios
+- react-router-dom
+- @tanstack/react-query
+- @types/node
+- @vitejs/plugin-react
 
 ## Second
 
