@@ -8,18 +8,6 @@ npm install -g kklo-react-ts-template
 
 ## Usage
 
-## First
-
-Create project with vite:
-
-```bash
-npm create vite@latest my-project
-cd my-project
-npm i
-```
-
-Then, run the following command:
-
 ```bash
 npx init-project my-project
 ```
