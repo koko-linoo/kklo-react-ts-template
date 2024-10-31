@@ -48,7 +48,6 @@ And will install the following packages:
 - react-router-dom
 - @tanstack/react-query
 - @types/node
-- @vitejs/plugin-react
 
 ## Second
 

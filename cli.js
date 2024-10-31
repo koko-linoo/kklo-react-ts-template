@@ -42,12 +42,13 @@ function createApp(appName) {
       copyFolderSync(path.join(__dirname, "template"), projectPath);
 
       console.log("Installing dependencies...");
+      execSync(`cd ${projectPath} && npm install`);
 
       execSync(
         `cd ${projectPath} && npm install axios react-router-dom @tanstack/react-query`
       );
 
-      execSync(`npm install -D @types/node @vitejs/plugin-react`);
+      execSync(`cd ${projectPath} && npm install -D @types/node`);
 
       console.log("Project setup complete!");
     } else {
