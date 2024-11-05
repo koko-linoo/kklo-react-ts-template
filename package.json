@@ -1,6 +1,6 @@
 {
   "name": "kklo-react-ts-template",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "index.js",
   "scripts": {
     "start": "node cli.js"
@@ -14,5 +14,11 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/koko-linoo/kklo-react-ts-template"
-  }
+  },
+  "keywords": [
+    "react",
+    "typescript",
+    "template",
+    "vite"
+  ]
 }

@@ -49,11 +49,10 @@ And will install the following packages:
 - @tanstack/react-query
 - @types/node
 
-## Second
-
 Run the following command:
 
 ```bash
+cd my-project
 npm run dev
 ```
 
