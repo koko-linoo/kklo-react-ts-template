@@ -38,16 +38,20 @@ function createApp(appName) {
   createVite.on("close", (code) => {
     if (code === 0) {
       console.log(`${appName} created successfully!`);
+
       const projectPath = path.join(appPath, appName);
+
+      console.log("Initializing project...");
+
       copyFolderSync(path.join(__dirname, "template"), projectPath);
 
-      console.log(`cd ${projectPath} && npm install`);
-
-      execSync(`cd ${projectPath} && npm install`);
+      console.log("Installing dependencies...");
 
       execSync(
-        `cd ${projectPath} && npm install axios react-router-dom @tanstack/react-query`
+        `cd ${projectPath} && npm install axios react-router-dom @tanstack/react-query zustand encrypt-storage`
       );
+
+      console.log("Installing types...");
 
       execSync(`cd ${projectPath} && npm install -D @types/node`);
 

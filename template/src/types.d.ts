@@ -12,6 +12,10 @@ declare global {
     data: T;
   };
 
+  type LoginResponse = User & {
+    accessToken: string;
+  };
+
   type ApiResponseList<T> = {
     data: T[];
     totalCount: number;

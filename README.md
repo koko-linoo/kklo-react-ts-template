@@ -46,8 +46,12 @@ And will install the following packages:
 
 - axios
 - react-router-dom
+- zustand
+- encrypt-storage
 - @tanstack/react-query
 - @types/node
+
+## Development
 
 Run the following command:
 
