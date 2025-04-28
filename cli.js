@@ -45,9 +45,11 @@ function createApp(appName) {
 
       execSync(`cd ${projectPath} && npm install`);
 
-      execSync(`npm install axios react-router-dom @tanstack/react-query`);
+      execSync(
+        `cd ${projectPath} && npm install axios react-router-dom @tanstack/react-query`
+      );
 
-      execSync(`npm install -D @types/node`);
+      execSync(`cd ${projectPath} && npm install -D @types/node`);
 
       console.log("Project setup complete!");
     } else {
