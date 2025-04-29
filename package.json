@@ -1,12 +1,13 @@
 {
   "name": "kklo-react-ts-template",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "index.js",
   "scripts": {
     "start": "node cli.js"
   },
   "bin": {
-    "init-project": "./cli.js"
+    "init-project": "./cli.js",
+    "add-mantine": "./mantine.js"
   },
   "engines": {
     "node": ">=12.0.0"

@@ -1,34 +1,13 @@
 #!/usr/bin/env node
 
-const fs = require("fs");
 const path = require("path");
 const util = require("util");
 const Loader = require("./loader");
+const { copyFolderSync } = require("./utils");
 
-const { spawn, execSync, exec } = require("child_process");
+const { spawn, exec } = require("child_process");
 
 const execPromise = util.promisify(exec);
-
-function copyFolderSync(from, to) {
-  fs.mkdirSync(to, { recursive: true });
-  fs.readdirSync(from).forEach((element) => {
-    const stat = fs.lstatSync(path.join(from, element));
-    if (stat.isFile()) {
-      fs.copyFileSync(path.join(from, element), path.join(to, element));
-    } else if (stat.isDirectory()) {
-      copyFolderSync(path.join(from, element), path.join(to, element));
-    }
-  });
-}
-
-function loadingTimer(message) {
-  const frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"];
-  let i = 0;
-  const interval = setInterval(() => {
-    process.stdout.write(`\r${message} ${frames[i++ % frames.length]}`);
-  }, 80);
-  return interval;
-}
 
 function createApp(appName) {
   const appPath = path.resolve(process.cwd());
@@ -63,10 +42,20 @@ function createApp(appName) {
       const devTimer = new Loader("Installing dev dependencies");
 
       devTimer.start();
-      await execPromise(`cd ${filename} && npm install -D @types/node`);
+      await execPromise(
+        `cd ${filename} && npm install -D @types/node kklo-react-ts-template`
+      );
       devTimer.stop();
 
-      console.log("Project setup complete!");
+      console.log("\nProject setup complete!\n");
+
+      console.log("\x1b[33mIf you want to add Mantine to your project, run:\n");
+      console.log("\rcd " + appName);
+      console.log("\rnpm run add-mantine \x1b[0m  \r\n");
+
+      console.log("To run your project, run:");
+
+      console.log("\rnpm run dev \x1b[0m  \r");
     } else {
       console.error(`Installation failed with code ${code}`);
     }
