@@ -42,16 +42,14 @@ function createApp(appName) {
       const devTimer = new Loader("Installing dev dependencies");
 
       devTimer.start();
-      await execPromise(
-        `cd ${filename} && npm install -D @types/node kklo-react-ts-template`
-      );
+      await execPromise(`cd ${filename} && npm install -D @types/node`);
       devTimer.stop();
 
       console.log("\nProject setup complete!\n");
 
       console.log("\x1b[33mIf you want to add Mantine to your project, run:\n");
       console.log("\rcd " + appName);
-      console.log("\rnpm run add-mantine \x1b[0m  \r\n");
+      console.log("\rnpx add-mantine \x1b[0m  \r\n");
 
       console.log("To run your project, run:");
 
