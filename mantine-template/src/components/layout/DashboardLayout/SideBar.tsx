@@ -165,7 +165,7 @@ export function SideBar() {
         ) : (
           <NavLink
             leftSection={<UserAvatar />}
-            label={user?.fullName}
+            label={user?.name}
             rightSection={<LogoutButton />}
           />
         )}
